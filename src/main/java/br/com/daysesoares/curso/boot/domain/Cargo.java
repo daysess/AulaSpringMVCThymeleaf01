@@ -1,5 +1,7 @@
 package br.com.daysesoares.curso.boot.domain;
 
+import java.util.List;
+
 import javax.persistence.*;
 
 @SuppressWarnings("serial")
@@ -13,6 +15,9 @@ public class Cargo extends AbstractEntity<Long> {
 	@ManyToOne
 	@JoinColumn(name = "id_departamento_fk")
 	private Departamento departamento;
+	
+	@OneToMany(mappedBy = "cargo")
+	private List<Funcionario> funcionarios;
 
 	public String getNome() {
 		return nome;
